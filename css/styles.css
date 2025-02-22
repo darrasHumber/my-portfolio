@@ -106,7 +106,7 @@ h2 {
 
 /* Contact Form Styles */
 #contact-form {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: var(--WHITE);
@@ -157,6 +157,17 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: var(--SECONDARY-COLOR);
+}
+
+/* Error Message Styles */
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+  font-style: italic;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 footer {
