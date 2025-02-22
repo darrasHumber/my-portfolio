@@ -1,28 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
-/* General Styles */
+
+:root {
+  --PRIMARY-COLOR: #1a535c;
+  --SECONDARY-COLOR: #4ecdc4;
+  --BACKGROUND-COLOR: #f7fff7;
+  --TEXT-COLOR: #333;
+  --WHITE: #ffffff;
+  --SHADOW-COLOR: rgba(0, 0, 0, 0.1);
+}
+
 body {
   font-family: "Poppins", serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  background-color: var(--BACKGROUND-COLOR);
+  color: var(--TEXT-COLOR);
 }
 
 header {
-  background-color: #333;
-  color: white;
+  background-color: var(--PRIMARY-COLOR);
+  color: var(--WHITE);
   padding: 20px;
   text-align: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 header p {
   font-weight: 700;
+  margin: 0;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li {
@@ -31,52 +45,56 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: var(--WHITE);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--SECONDARY-COLOR);
 }
 
 section {
   padding: 20px;
   margin: 20px;
+  background-color: var(--WHITE);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--SHADOW-COLOR);
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+h2 {
+  color: var(--PRIMARY-COLOR);
+  margin-top: 0;
 }
 
 #projects ul {
   list-style-type: none;
   padding: 0;
-  margin: 0 20px;
+  margin: 0;
 }
 
 #projects ul li {
-  background-color: white;
+  background-color: var(--WHITE);
   margin: 10px 0;
   padding: 15px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--SHADOW-COLOR);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #projects ul li:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--SHADOW-COLOR);
 }
 
 #projects ul li strong {
-  color: #2c3e50;
+  color: var(--PRIMARY-COLOR);
   font-weight: 600;
 }
 
 #projects ul li a {
-  color: #3498db;
+  color: var(--SECONDARY-COLOR);
   text-decoration: none;
   font-weight: 500;
   margin-left: 10px;
@@ -84,4 +102,36 @@ footer {
 
 #projects ul li a:hover {
   text-decoration: underline;
+}
+
+footer {
+  background-color: var(--PRIMARY-COLOR);
+  color: var(--WHITE);
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  nav ul li {
+    display: block;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  section {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  footer {
+    padding: 5px;
+  }
 }
