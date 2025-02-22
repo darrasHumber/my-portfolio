@@ -10,3 +10,4 @@
 
 - Add Contatct Me form with style
 - Add form Validation using JS.
+- Adding a Dynamic Project Gallery.

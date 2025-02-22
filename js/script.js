@@ -9,6 +9,8 @@ const emailError = document.getElementById("email-error");
 const subjectError = document.getElementById("subject-error");
 const messageError = document.getElementById("message-error");
 
+const detailsButtons = document.querySelectorAll(".details-button");
+
 function fadeOutErrorMessages() {
   const errorMessages = [nameError, emailError, subjectError, messageError];
 
@@ -71,4 +73,17 @@ form.addEventListener("submit", function (event) {
   } else {
     fadeOutErrorMessages();
   }
+});
+
+detailsButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const details = button.parentElement.nextElementSibling; // Updated to match new structure
+    details.classList.toggle("open");
+
+    if (details.classList.contains("open")) {
+      button.textContent = "Hide Details";
+    } else {
+      button.textContent = "Show Details";
+    }
+  });
 });
