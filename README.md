@@ -10,3 +10,8 @@
 - Add form Validation using JS.
 - Adding a Dynamic Project Gallery.
 - Integrate Typed.js in the portfolio.
+
+### Chapter 4 - Continuous Improvement
+
+- Smoth Scrolling Updated
+- Dark Mode added

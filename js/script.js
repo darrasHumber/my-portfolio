@@ -103,3 +103,40 @@ const typed = new Typed("#typed-text", {
   showCursor: true,
   cursorChar: "|",
 });
+
+const toggleThemeButton = document.getElementById("toggleTheme");
+
+// Function to update button text based on the current theme
+function updateButtonText() {
+  if (document.body.classList.contains("dark-mode")) {
+    toggleThemeButton.textContent = "Switch to Light Mode";
+  } else {
+    toggleThemeButton.textContent = "Switch to Dark Mode";
+  }
+}
+
+// Add event listener to toggle dark mode
+toggleThemeButton.addEventListener("click", function () {
+  document.body.classList.toggle("dark-mode");
+
+  // Save the user's preference in localStorage
+  if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+
+  // Update the button text
+  updateButtonText();
+});
+
+// Check for saved theme preference on page load
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark-mode");
+} else {
+  document.body.classList.remove("dark-mode");
+}
+
+// Update the button text on page load
+updateButtonText();
