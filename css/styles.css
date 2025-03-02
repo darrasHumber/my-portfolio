@@ -211,6 +211,41 @@ button[type="submit"]:hover {
     var(--PRIMARY-COLOR)
   );
 }
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 2px solid var(--PRIMARY-COLOR);
+  background-color: transparent;
+  color: var(--PRIMARY-COLOR);
+  border-radius: 4px;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn.active {
+  background: linear-gradient(
+    135deg,
+    var(--PRIMARY-COLOR),
+    var(--SECONDARY-COLOR)
+  );
+  color: var(--WHITE);
+}
+.filter-btn:hover {
+  background: linear-gradient(
+    135deg,
+    var(--SECONDARY-COLOR),
+    var(--PRIMARY-COLOR)
+  );
+  color: var(--WHITE);
+}
 
 #contact-form {
   margin: 0 4rem;

@@ -43,10 +43,24 @@
       </p>
     </section>
 
+    <!-- projects Section -->
     <section id="projects">
       <h2>My Projects</h2>
+      <!-- Filter Buttons -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="data-science">
+          Data Science
+        </button>
+        <button class="filter-btn" data-category="javascript">
+          JavaScript
+        </button>
+        <button class="filter-btn" data-category="python">Python</button>
+      </div>
+      <!-- Projects List -->
       <ul>
-        <li>
+        <!-- Data Science Projects -->
+        <li class="project" data-category="data-science">
           <strong>House Price Prediction</strong> - Built a regression model to
           predict house prices using Python and Scikit-learn.
           <div>
@@ -64,7 +78,7 @@
             </p>
           </div>
         </li>
-        <li>
+        <li class="project" data-category="data-science">
           <strong>Email Spam Classifier</strong> - Developed a classification
           model to detect spam emails using Python and NLP techniques.
           <div>
@@ -81,7 +95,25 @@
             </p>
           </div>
         </li>
-        <li>
+        <li class="project" data-category="data-science">
+          <strong>Customer Segmentation</strong> - Performed customer
+          segmentation using clustering techniques on a retail dataset.
+          <div>
+            <button class="details-button">Show Details</button>
+          </div>
+          <div class="project-details">
+            <p>
+              This project used K-Means clustering to group customers based on
+              their purchasing behavior.
+            </p>
+            <p>
+              <strong>Technologies Used:</strong> Python, Scikit-learn, Pandas,
+              Matplotlib
+            </p>
+          </div>
+        </li>
+        <!-- JavaScript Projects -->
+        <li class="project" data-category="javascript">
           <strong>Interactive To-Do App</strong> - Created a dynamic to-do list
           app using HTML, CSS, and JavaScript.
           <div>
@@ -95,19 +127,66 @@
             <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
           </div>
         </li>
-        <li>
-          <strong>Portfolio Website</strong> - Designed and developed a personal
-          portfolio website to showcase my projects and skills.
+        <li class="project" data-category="javascript">
+          <strong>Weather App</strong> - Built a weather application using
+          JavaScript and a third-party weather API.
           <div>
             <button class="details-button">Show Details</button>
           </div>
           <div class="project-details">
             <p>
-              This website was built to showcase my projects, skills, and
-              experience. It includes responsive design and interactive
-              elements.
+              This app fetches real-time weather data based on the user's
+              location and displays it in a user-friendly interface.
             </p>
-            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+            <p>
+              <strong>Technologies Used:</strong> JavaScript, API Integration
+            </p>
+          </div>
+        </li>
+        <li class="project" data-category="javascript">
+          <strong>Quiz App</strong> - Developed a quiz application using
+          JavaScript to test users on various topics.
+          <div>
+            <button class="details-button">Show Details</button>
+          </div>
+          <div class="project-details">
+            <p>
+              This app includes multiple-choice questions, a scoring system, and
+              a results page.
+            </p>
+            <p><strong>Technologies Used:</strong> JavaScript, HTML, CSS</p>
+          </div>
+        </li>
+        <!-- Python Projects -->
+        <li class="project" data-category="python">
+          <strong>Automated File Organizer</strong> - Created a Python script to
+          automatically organize files in a directory based on their type.
+          <div>
+            <button class="details-button">Show Details</button>
+          </div>
+          <div class="project-details">
+            <p>
+              This script categorizes files into folders (e.g., Images,
+              Documents, Videos) based on their extensions.
+            </p>
+            <p><strong>Technologies Used:</strong> Python, OS Module</p>
+          </div>
+        </li>
+        <li class="project" data-category="python">
+          <strong>Web Scraper</strong> - Built a web scraper using Python to
+          extract data from websites.
+          <div>
+            <button class="details-button">Show Details</button>
+          </div>
+          <div class="project-details">
+            <p>
+              This project involved scraping product details from an e-commerce
+              website and saving the data to a CSV file.
+            </p>
+            <p>
+              <strong>Technologies Used:</strong> Python, BeautifulSoup,
+              Requests
+            </p>
           </div>
         </li>
       </ul>

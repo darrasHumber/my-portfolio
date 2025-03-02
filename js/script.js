@@ -140,3 +140,32 @@ if (savedTheme === "dark") {
 
 // Update the button text on page load
 updateButtonText();
+
+// Get filter buttons and projects
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projects = document.querySelectorAll(".project");
+
+// Add event listeners to filter buttons
+filterButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    // Remove active class from all buttons
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    // Add active class to the clicked button
+    this.classList.add("active");
+
+    // Get the selected category
+    const selectedCategory = this.getAttribute("data-category");
+
+    // Filter projects
+    projects.forEach((project) => {
+      const projectCategory = project.getAttribute("data-category");
+
+      // Show or hide projects based on the selected category
+      if (selectedCategory === "all" || projectCategory === selectedCategory) {
+        project.style.display = "block";
+      } else {
+        project.style.display = "none";
+      }
+    });
+  });
+});

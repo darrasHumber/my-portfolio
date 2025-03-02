@@ -15,3 +15,4 @@
 
 - Smoth Scrolling Updated
 - Dark Mode added
+- Filter functionallity added
