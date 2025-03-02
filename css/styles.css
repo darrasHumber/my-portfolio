@@ -117,12 +117,38 @@ nav ul li button:active {
   outline: 2px solid var(--ACCENT-COLOR);
 }
 
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 section {
   padding: 20px;
   margin: 20px;
   background-color: var(--WHITE);
   border-radius: 8px;
   box-shadow: 0 4px 8px var(--SHADOW-COLOR);
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  animation: fadeInSlideUp 1.5s ease forwards;
+}
+
+section:nth-child(1) {
+  animation-delay: 0s;
+}
+
+section:nth-child(2) {
+  animation-delay: 1s;
+}
+
+section:nth-child(3) {
+  animation-delay: 2s;
 }
 
 h2 {
@@ -168,22 +194,11 @@ h2 {
   text-decoration: none;
   font-weight: 500;
   margin-left: 10px;
+  transition: all 0.3s ease;
 }
 
 #projects ul li a:hover {
   text-decoration: underline;
-}
-
-.project-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.5s ease;
-  padding: 0 15px;
-}
-
-.project-details.open {
-  max-height: 200px;
-  padding: 15px;
 }
 
 .details-button,
@@ -200,7 +215,7 @@ button[type="submit"] {
   cursor: pointer;
   font-family: "Poppins", serif;
   font-size: 14px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .details-button:hover,
@@ -210,7 +225,20 @@ button[type="submit"]:hover {
     var(--SECONDARY-COLOR),
     var(--PRIMARY-COLOR)
   );
+  transform: scale(1.05);
 }
+
+.project-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.project-details.open {
+  max-height: 200px;
+  padding: 15px;
+}
+
 .filter-buttons {
   display: flex;
   gap: 10px;
@@ -227,18 +255,31 @@ button[type="submit"]:hover {
   font-family: "Poppins", serif;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.filter-btn.active {
+.filter-btn:hover {
   background: linear-gradient(
     135deg,
     var(--PRIMARY-COLOR),
     var(--SECONDARY-COLOR)
   );
   color: var(--WHITE);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.filter-btn:hover {
+
+.filter-btn:active {
+  background: linear-gradient(
+    135deg,
+    var(--SECONDARY-COLOR),
+    var(--PRIMARY-COLOR)
+  );
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn.active {
   background: linear-gradient(
     135deg,
     var(--SECONDARY-COLOR),

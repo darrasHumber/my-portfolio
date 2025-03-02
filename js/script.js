@@ -1,3 +1,4 @@
+// DOM Elements
 const form = document.getElementById("contact-form");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
@@ -10,28 +11,27 @@ const subjectError = document.getElementById("subject-error");
 const messageError = document.getElementById("message-error");
 
 const detailsButtons = document.querySelectorAll(".details-button");
+const toggleThemeButton = document.getElementById("toggleTheme");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projects = document.querySelectorAll(".project");
 
-function fadeOutErrorMessages() {
-  const errorMessages = [nameError, emailError, subjectError, messageError];
+// Typed.js Initialization
+const typed = new Typed("#typed-text", {
+  strings: [
+    "Python.",
+    "Data Science.",
+    "Machine Learning.",
+    "Web Development.",
+    "Problem Solving.",
+  ],
+  typeSpeed: 50,
+  backSpeed: 30,
+  loop: true,
+  showCursor: true,
+  cursorChar: "|",
+});
 
-  setTimeout(() => {
-    errorMessages.forEach((error) => {
-      if (error.textContent !== "") {
-        error.style.opacity = "0.5";
-      }
-    });
-  }, 5000);
-
-  setTimeout(() => {
-    errorMessages.forEach((error) => {
-      if (error.textContent !== "") {
-        error.textContent = "";
-        error.style.opacity = "1";
-      }
-    });
-  }, 10000);
-}
-
+// Form Validation
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -75,9 +75,32 @@ form.addEventListener("submit", function (event) {
   }
 });
 
+// Fade Out Error Messages
+function fadeOutErrorMessages() {
+  const errorMessages = [nameError, emailError, subjectError, messageError];
+
+  setTimeout(() => {
+    errorMessages.forEach((error) => {
+      if (error.textContent !== "") {
+        error.style.opacity = "0.5";
+      }
+    });
+  }, 5000);
+
+  setTimeout(() => {
+    errorMessages.forEach((error) => {
+      if (error.textContent !== "") {
+        error.textContent = "";
+        error.style.opacity = "1";
+      }
+    });
+  }, 10000);
+}
+
+// Show/Hide Project Details
 detailsButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const details = button.parentElement.nextElementSibling; // Updated to match new structure
+    const details = button.parentElement.nextElementSibling;
     details.classList.toggle("open");
 
     if (details.classList.contains("open")) {
@@ -88,49 +111,27 @@ detailsButtons.forEach((button) => {
   });
 });
 
-// Initialize Typed.js
-const typed = new Typed("#typed-text", {
-  strings: [
-    "Python.",
-    "Data Science.",
-    "Machine Learning.",
-    "Web Development.",
-    "Problem Solving.",
-  ],
-  typeSpeed: 50,
-  backSpeed: 30,
-  loop: true,
-  showCursor: true,
-  cursorChar: "|",
-});
-
-const toggleThemeButton = document.getElementById("toggleTheme");
-
-// Function to update button text based on the current theme
-function updateButtonText() {
-  if (document.body.classList.contains("dark-mode")) {
-    toggleThemeButton.textContent = "Switch to Light Mode";
-  } else {
-    toggleThemeButton.textContent = "Switch to Dark Mode";
-  }
-}
-
-// Add event listener to toggle dark mode
+// Dark Mode Toggle
 toggleThemeButton.addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
 
-  // Save the user's preference in localStorage
   if (document.body.classList.contains("dark-mode")) {
     localStorage.setItem("theme", "dark");
   } else {
     localStorage.setItem("theme", "light");
   }
 
-  // Update the button text
   updateButtonText();
 });
 
-// Check for saved theme preference on page load
+// Update Dark Mode Button Text
+function updateButtonText() {
+  toggleThemeButton.textContent = document.body.classList.contains("dark-mode")
+    ? "Switch to Light Mode"
+    : "Switch to Dark Mode";
+}
+
+// Load Saved Theme
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
   document.body.classList.add("dark-mode");
@@ -138,29 +139,19 @@ if (savedTheme === "dark") {
   document.body.classList.remove("dark-mode");
 }
 
-// Update the button text on page load
 updateButtonText();
 
-// Get filter buttons and projects
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projects = document.querySelectorAll(".project");
-
-// Add event listeners to filter buttons
+// Project Filtering
 filterButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    // Remove active class from all buttons
     filterButtons.forEach((btn) => btn.classList.remove("active"));
-    // Add active class to the clicked button
     this.classList.add("active");
 
-    // Get the selected category
     const selectedCategory = this.getAttribute("data-category");
 
-    // Filter projects
     projects.forEach((project) => {
       const projectCategory = project.getAttribute("data-category");
 
-      // Show or hide projects based on the selected category
       if (selectedCategory === "all" || projectCategory === selectedCategory) {
         project.style.display = "block";
       } else {

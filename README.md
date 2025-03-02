@@ -16,3 +16,4 @@
 - Smoth Scrolling Updated
 - Dark Mode added
 - Filter functionallity added
+- Animation to buttons, links, and sections added
