@@ -87,3 +87,19 @@ detailsButtons.forEach((button) => {
     }
   });
 });
+
+// Initialize Typed.js
+const typed = new Typed("#typed-text", {
+  strings: [
+    "Python.",
+    "Data Science.",
+    "Machine Learning.",
+    "Web Development.",
+    "Problem Solving.",
+  ],
+  typeSpeed: 50,
+  backSpeed: 30,
+  loop: true,
+  showCursor: true,
+  cursorChar: "|",
+});

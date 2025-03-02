@@ -230,6 +230,11 @@ footer {
   width: 100%;
 }
 
+/* Typed.js Styles */
+#typed-text {
+  font-weight: 600;
+  color: var(--SECONDARY-COLOR);
+}
 /* Mobile Styles */
 @media only screen and (max-width: 600px) {
   header {
