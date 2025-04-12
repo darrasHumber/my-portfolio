@@ -52,23 +52,23 @@ form.addEventListener("submit", function (event) {
     emailError.textContent = "We need your email to get back to you 📧";
     isValid = false;
   } else if (!emailPattern.test(emailInput.value.trim())) {
-    emailError.textContent = "Oops! That doesn’t look like a valid email 🤔";
+    emailError.textContent = "Oops! That doesn't look like a valid email 🤔";
     isValid = false;
   }
 
   if (subjectInput.value.trim() === "") {
-    subjectError.textContent = "What’s this about? Please add a subject 📝";
+    subjectError.textContent = "What's this about? Please add a subject 📝";
     isValid = false;
   }
 
   if (messageInput.value.trim() === "") {
     messageError.textContent =
-      "We’d love to hear from you! Please write a message 💬";
+      "We'd love to hear from you! Please write a message 💬";
     isValid = false;
   }
 
   if (isValid) {
-    alert("Thank you for reaching out! We’ll get back to you soon. 😊");
+    alert("Thank you for reaching out! We'll get back to you soon. 😊");
     form.reset();
   } else {
     fadeOutErrorMessages();
@@ -121,14 +121,17 @@ toggleThemeButton.addEventListener("click", function () {
     localStorage.setItem("theme", "light");
   }
 
-  updateButtonText();
+  updateButtonIcon();
 });
 
-// Update Dark Mode Button Text
-function updateButtonText() {
-  toggleThemeButton.textContent = document.body.classList.contains("dark-mode")
-    ? "Switch to Light Mode"
-    : "Switch to Dark Mode";
+// Update Dark Mode Button Icon
+function updateButtonIcon() {
+  const icon = toggleThemeButton.querySelector("i");
+  if (document.body.classList.contains("dark-mode")) {
+    icon.className = "fas fa-sun"; // Sun icon for light mode option
+  } else {
+    icon.className = "fas fa-moon"; // Moon icon for dark mode option
+  }
 }
 
 // Load Saved Theme
@@ -139,7 +142,7 @@ if (savedTheme === "dark") {
   document.body.classList.remove("dark-mode");
 }
 
-updateButtonText();
+updateButtonIcon();
 
 // Project Filtering
 filterButtons.forEach((button) => {
