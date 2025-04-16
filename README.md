@@ -1,19 +1,39 @@
-# Mohammed Darras Portfolio
+# Mohammed Darras Portfolio Website
 
-### Chapter 1 - Create basic html and css files!
+This repository contains the code for Mohammed Darras' personal portfolio website, showcasing his skills and projects in mathematics, data science, and web development.
 
-### Chapter 2 - Adding CSS for Styling and Layout
+## Overview
 
-### Capter 3 - Adding JavaScript for Interactivity
+The portfolio is a responsive single-page website built with HTML, CSS, and JavaScript. It features a clean, modern design with dark mode support, project filtering, and interactive elements.
 
-- Add Contatct Me form with style
-- Add form Validation using JS.
-- Adding a Dynamic Project Gallery.
-- Integrate Typed.js in the portfolio.
+### Features
 
-### Chapter 4 - Continuous Improvement
+- Responsive Design: Fully responsive layout that works well on devices of all sizes
+- Dark/Light Mode Toggle: User preference is saved in local storage
+- Project Filtering: Filter projects by category (Data Science, JavaScript, Python)
+- Interactive Elements: Typed.js animations, smooth scrolling, project details expansion
+- Contact Form: Form validation with error handling
+- Accessibility: ARIA attributes and keyboard navigation support
 
-- Smoth Scrolling Updated
-- Dark Mode added
-- Filter functionallity added
-- Animation to buttons, links, and sections added
+### Structure
+
+The website consists of several sections:
+
+- Header with navigation
+- Hero section
+- About Me section with skills
+- Projects showcase with filtering
+- Contact form
+- Footer
+
+## Technologies Used
+
+- **HTML5**: Semantic markup structure
+- **CSS3**: Custom properties, flexbox, grid, animations, and media queries
+- **JavaScript**: DOM manipulation, form validation, and interactive features
+- **Libraries**:
+
+  - Typed.js for text animations
+  - Font Awesome for icons
+
+For more info contact me [Mohammed Darras](https://github.com/darrasHumber)
