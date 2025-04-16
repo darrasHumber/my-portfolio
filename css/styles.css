@@ -679,11 +679,16 @@ section.visible {
 /* Footer */
 footer {
   background: var(--GRADIENT-SECONDARY);
-  color: var(--WHITE);
   text-align: center;
   padding: var(--SPACING-M);
   position: relative;
   margin-top: var(--SPACING-XL);
+}
+
+footer,
+footer p,
+.footer-content {
+  color: var(--WHITE);
 }
 
 .footer-content {
@@ -708,7 +713,7 @@ footer {
   height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--RADIUS-CIRCLE);
-  color: white;
+  color: var(--WHITE);
   transition: all var(--TRANSITION-DEFAULT);
 }
 
