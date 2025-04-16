@@ -15,14 +15,66 @@ const toggleThemeButton = document.getElementById("toggleTheme");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projects = document.querySelectorAll(".project");
 
+// Save form data to localStorage when inputs change
+const formInputs = [nameInput, emailInput, subjectInput, messageInput];
+formInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    localStorage.setItem(`form_${input.id}`, input.value);
+  });
+});
+
+// Load saved form data on page load
+window.addEventListener("DOMContentLoaded", () => {
+  formInputs.forEach((input) => {
+    const savedValue = localStorage.getItem(`form_${input.id}`);
+    if (savedValue) input.value = savedValue;
+  });
+});
+
+// Initialize animations on page load
+document.addEventListener("DOMContentLoaded", function () {
+  // Add scroll animation to sections
+  const sections = document.querySelectorAll("section");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+
 // Typed.js Initialization
 const typed = new Typed("#typed-text", {
   strings: [
-    "Python.",
-    "Data Science.",
-    "Machine Learning.",
-    "Web Development.",
-    "Problem Solving.",
+    "Mathematician",
+    "Data Scientist",
+    "Problem Solver",
+    "Web Developer",
+  ],
+  typeSpeed: 50,
+  backSpeed: 30,
+  loop: true,
+  showCursor: true,
+  cursorChar: "|",
+});
+
+// Second typed.js instance
+const specialties = new Typed("#specialties", {
+  strings: [
+    "Python",
+    "Data Science",
+    "Machine Learning",
+    "Web Development",
+    "Problem Solving",
   ],
   typeSpeed: 50,
   backSpeed: 30,
@@ -68,8 +120,28 @@ form.addEventListener("submit", function (event) {
   }
 
   if (isValid) {
-    alert("Thank you for reaching out! We'll get back to you soon. 😊");
-    form.reset();
+    // Submit animation
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    // Simulate form submission
+    setTimeout(() => {
+      submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+      submitButton.style.backgroundColor = "var(--ACCENT-COLOR)";
+
+      // Clear localStorage after successful submission
+      formInputs.forEach((input) => {
+        localStorage.removeItem(`form_${input.id}`);
+      });
+
+      // Reset form after delay
+      setTimeout(() => {
+        form.reset();
+        submitButton.innerHTML = "Send Message";
+        submitButton.style.backgroundColor = "";
+      }, 2000);
+    }, 1500);
   } else {
     fadeOutErrorMessages();
   }
@@ -100,11 +172,14 @@ function fadeOutErrorMessages() {
 // Show/Hide Project Details
 detailsButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const details = button.parentElement.nextElementSibling;
+    const projectCard = button.closest(".project-card");
+    const details = projectCard.querySelector(".project-details");
     details.classList.toggle("open");
 
     if (details.classList.contains("open")) {
       button.textContent = "Hide Details";
+      // Scroll the details into view
+      details.scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
       button.textContent = "Show Details";
     }
@@ -144,6 +219,11 @@ if (savedTheme === "dark") {
 
 updateButtonIcon();
 
+// Add transition for filtered projects
+projects.forEach((project) => {
+  project.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+});
+
 // Project Filtering
 filterButtons.forEach((button) => {
   button.addEventListener("click", function () {
@@ -156,10 +236,33 @@ filterButtons.forEach((button) => {
       const projectCategory = project.getAttribute("data-category");
 
       if (selectedCategory === "all" || projectCategory === selectedCategory) {
-        project.style.display = "block";
+        project.style.opacity = "1";
+        project.style.transform = "scale(1)";
+        setTimeout(() => {
+          project.style.display = "block";
+        }, 10);
       } else {
-        project.style.display = "none";
+        project.style.opacity = "0";
+        project.style.transform = "scale(0.8)";
+        setTimeout(() => {
+          project.style.display = "none";
+        }, 300);
       }
     });
+  });
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 70, // Adjust for header height
+        behavior: "smooth",
+      });
+    }
   });
 });
